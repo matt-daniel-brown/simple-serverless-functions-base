@@ -1,12 +1,12 @@
 
 
-
+const telegram = require('telegram-bot-api');
+const botToken = '1022774009:AAEm0YwjwRaXV-NoqrQrexv8_yQ6S00XO-Y';
 exports.handler = async (event, context) => {
     try {
         /*return { statusCode: 200, body: `Hello from a serverless function!` };*/
 
-        const telegram = require('telegram-bot-api');
-        const botToken = '1022774009:AAEm0YwjwRaXV-NoqrQrexv8_yQ6S00XO-Y';
+
 
 
         const api = new telegram({
@@ -21,6 +21,7 @@ exports.handler = async (event, context) => {
             // Received text message
             console.log(message);
             api.sendMessage(`YOU SAID : ${message}`);
+
         });
 
         api.on('inline.query', function(message)
@@ -54,6 +55,7 @@ exports.handler = async (event, context) => {
             // event types in one callback
             console.log(message);
         });
+        return { statusCode: 200, body: `Hello from a serverless function!` };
     } catch (err) {
         return { statusCode: 500, body: err.toString() };
     }
